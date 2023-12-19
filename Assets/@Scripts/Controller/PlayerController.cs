@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
-    public static PlayerController instance;
 
     public Vector2 CurMovementInput
     {
@@ -52,9 +51,20 @@ public class PlayerController : MonoBehaviour
         set { _curMovementInput = value; }
     }
 
+    public float MoveSpeed // 플레이어 속력
+    {
+        get { return moveSpeed; }
+        set { moveSpeed = value; }
+    }
+
+    public float JumpForce // 플레이어 점프 파워
+    {
+        get { return jumpForce; }
+        set { jumpForce = value; }
+    }
+
     private void Awake()
     {
-        instance = this;
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         checkPoint = transform.position;

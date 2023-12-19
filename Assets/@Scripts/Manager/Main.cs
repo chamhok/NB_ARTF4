@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Scripts.Scene;
 using Scripts.UI;
-using Scripts.Utility;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -34,8 +30,11 @@ public class Main : MonoBehaviour
     private readonly UI_Manager _ui = new();
     private readonly SetBinder _setBinder = new();
     private readonly ResourceManager _resource = new();
+    private readonly PlayerController _playerControl = new();
+    private DataManager _data = new();
     private BaseScene _scene;
-  
+
+
     #endregion
 
     #region Properties
@@ -44,7 +43,9 @@ public class Main : MonoBehaviour
     public static SetBinder SetBinder => Instance._setBinder;
     public static ResourceManager Resource => Instance._resource;
     public static BaseScene Scene => Instance._scene;
-  
+    public static PlayerController PlayerControl => Instance._playerControl;
+    public static DataManager Data => Instance._data;
+
     #endregion
 
     public static void SetCurrentScene(BaseScene scene, Label sceneLabel)
@@ -55,6 +56,7 @@ public class Main : MonoBehaviour
 
     public static void SceneClear()
     {
-        // TODO : 씬 전환시 필요한 로직 추가
+        string beforeScene = Scene.CurrentScene.ToString();
+        Resource.UnloadAllAsync(beforeScene);
     }
 }

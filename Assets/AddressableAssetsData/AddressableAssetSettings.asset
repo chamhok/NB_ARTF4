@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 70ea8805d23aec9418cbd1e019115176
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 61c22ebd19a814209cb00b9ba2a23925
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
     - MainScene
     - Preload
     - IntroScene
+    - GameScene
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 43a09c97fd9c7ad4b94ea4465e7e92c7, type: 2}

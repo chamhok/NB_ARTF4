@@ -15,7 +15,17 @@ public class UI_Manager : MonoBehaviour
 
     private int _sortByOrderLayer = 1;
     private Stack<Popup> _popupOrder = new();
+    private event Action _onCloseDeathPanel;
 
+    #endregion
+
+    #region Fields
+
+    public event Action OnCloseDeathPanel
+    {
+        add { _onCloseDeathPanel += value; }
+        remove { _onCloseDeathPanel -= value; }
+    }
     #endregion
 
     private GameObject UIBase
@@ -111,5 +121,10 @@ public class UI_Manager : MonoBehaviour
             return;
         }
         Time.timeScale = _popupOrder.Count > 0 ? 0 : 1;
+    }
+
+    public void CloseDeathPanel()
+    {
+        _onCloseDeathPanel?.Invoke();
     }
 }

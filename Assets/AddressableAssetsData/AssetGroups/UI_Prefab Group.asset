@@ -35,6 +35,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 447f6e7cbda334946a8a3c601af4d805
+    m_Address: Game_UI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameScene
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41880bb6cada78640a3a8d06aa5c310a
+    m_Address: DiePanel_Popup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GameScene
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9c71194f839de0045bd7cba7451810ba, type: 2}
   m_SchemaSet:

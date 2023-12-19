@@ -1,19 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
-    private PlayerController playerController;
+    //private PlayerController playerController;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        playerController = GetComponent<PlayerController>();
+        //playerController = GetComponent<PlayerController>();
     }
 
     private void Update()
     {
-        float moveMagnitude = playerController.CurMovementInput.magnitude;
+        float moveMagnitude = Main.PlayerControl.CurMovementInput.magnitude;
 
         // walk 애니메이션
         if (moveMagnitude > 0.01)
