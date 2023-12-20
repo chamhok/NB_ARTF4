@@ -3,16 +3,18 @@ using UnityEngine;
 /// <summary>
 /// 게임 내의 개별 아이템을 표현하는 클래스입니다.
 /// </summary>
+/// 
+
 public class Item : MonoBehaviour
 {
     #region Field
-    private int _id; // 아이디
-    private string _name; //이름
-    private string _category; //속성
-    private string _description; // 설명
+    [SerializeField] private int _id; // 아이디
+    [SerializeField] private string _name; //이름
+    [SerializeField] private string _category; //속성
+    [SerializeField] private string _description; // 설명
     private bool _isActive; // 활성상태
-    private float _power; // 아이템이 주는 효과
-    private float _duration; // 아이템 지속시간
+    [SerializeField] private float _power; // 아이템이 주는 효과
+    [SerializeField] private float _duration; // 아이템 지속시간
     #endregion
     #region Initialization
     public void Initialize(int id, string name, string category, string description, float power, float duration)

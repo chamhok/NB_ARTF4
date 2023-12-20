@@ -3813,11 +3813,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4512ba4dd6a5d48a80084e19df8365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 500
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 55
   cameraContainer: {fileID: 8972256737777320422}
   throwablePrefab: {fileID: 1777980455888321186, guid: 5b02b85d6d6e79c46968d04e0b24c71b, type: 3}
+  throwForce: 10
+  throwCooldown: 1
+  gravity: 9.8
   checkPoint: {x: 0, y: 4, z: 0}
   canLook: 1
 --- !u!114 &2619663492248675219

@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     private static readonly int Throw = Animator.StringToHash("Throw");
 
+    private Item _item;
+
     public Vector2 CurMovementInput
     {
         get { return _curMovementInput; }
@@ -236,5 +238,71 @@ public class PlayerController : MonoBehaviour
             isStuned = false;
             canMove = true;
         }
+    }
+
+    /// <summary>
+    /// 아이템의 효과를 플레이어에 적용하거나 제거하는 메서드
+    /// apply가 true이면 효과를 적용하고, false이면 효과를 제거합니다.
+    /// </summary>
+    /// <param name="item">효과를 적용할 아이템</param>
+    /// <param name="apply">효과를 적용할 것인지 불값을 받습니다.</param>
+    private void UpdatePlayerWithItemEffect(Item item, bool apply)
+    {
+        float factor = apply ? item.Power : 1 / item.Power;
+
+        switch (item.Id)
+        {
+            case 0:
+                // Main.PlayerControl.SetMoveSpeed(_player.GetSpeed() * factor); 
+                break;
+            case 1:
+                // Main.PlayerController.SetJumpForce(_player.GetJumpForc() * factor);
+                break;
+        }
+    }
+
+    /// <summary>
+    ///  아이템의 효과를 플레이어에게 적용하는 메서드
+    /// </summary>
+    /// <param name="item">적용할 아이템</param>
+    private void ApplyItemsEffectToPlayer(Item item)
+    {
+        UpdatePlayerWithItemEffect(item, true);
+    }
+
+    /// <summary>
+    ///  아이템의 효과를 원래 대로 되돌리는 메서드
+    /// </summary>
+    /// <param name="item">적용할 아이템</param>
+    public void RemoveItemsEffectFromPlayer(Item item)
+    {
+        UpdatePlayerWithItemEffect(item, false);
+    }
+    public void ActivateItem(Item item)
+    {
+        // 아이템을 활성화합니다.
+        item.IsActivate = true;
+        ApplyItemsEffectToPlayer(item);
+        Debug.Log($"{item.Name} 아이템이 활성화되었습니다.");
+        this._item = item;
+        // DeactivateItem 메서드를 3초 후에 호출합니다.
+        Invoke("DeactivateItem", 3f);
+    }
+
+    public void DeactivateItem()
+    {
+        // 아이템을 비활성화합니다.
+        _item.IsActivate = false;
+        Debug.Log($"{_item.Name} 아이템이 비활성화되었습니다.");
+
+        // 아이템을 목록에서 제거합니다.
+        Main.Item.RemoveItem(_item);
+    }
+
+    public void StartActivateItem(Item item)
+    {
+        Item crruentItem = item;
+        Debug.Log("dddddd");
+        ActivateItem(crruentItem);
     }
 }
